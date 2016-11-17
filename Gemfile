@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'geocoder'
 gem 'starter_generators'
+gem 'figaro'
 
 
 group :development, :test do

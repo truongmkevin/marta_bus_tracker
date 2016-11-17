@@ -7,7 +7,7 @@ module LocationsHelper
   end
 
   def is_nearby(lat_user, long_user, lat_bus, long_bus)
-    (long_user - long_bus).abs <= 0.01 && (lat_user - lat_bus).abs <= 0.01
+    (long_user.to_f - long_bus.to_f).abs <= 0.01 && (lat_user.to_f - lat_bus.to_f).abs <= 0.01
   end
 
 end

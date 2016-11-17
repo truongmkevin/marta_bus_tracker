@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<p>The address you listed is at:</p>
+
 <p>
   <strong>Latitude:</strong>
   <%= @location.latitude %>
@@ -19,6 +21,23 @@
   <strong>City:</strong>
   <%= @location.city %>
 </p>
+
+
+<% @nearby_buses.each do |bus| %>
+  <p>
+    Route: <%= bus["ROUTE"] %>
+  </p>
+  <p>
+    Bus Number: <%= bus["VEHICLE"] %>
+  </p>
+  <p>
+    Lat: <%= bus["LATITUDE"] %>
+  </p>
+  <p>
+    Long: <%= bus["LONGITUDE"] %>
+  </p>
+  <hr>
+<% end %>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

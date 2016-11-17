@@ -61,12 +61,29 @@
 
       var busLatLng = new google.maps.LatLng(bus["LATITUDE"], bus["LONGITUDE"])
 
+      busImage = "<%= image_path "bus.png" %>"
       var busMarker = new google.maps.Marker({
-          position: busLatLng,
-          map: map,
-          animation: google.maps.Animation.DROP,
-          title: bus["VEHICLE"]
-        })
+        position: busLatLng,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        title: bus["VEHICLE"],
+        icon: busImage
+      })
+
+      var contents = '<div id="content">' +
+        '<h2>Bus ' + bus['VEHICLE'] + ' '+ bus['DIRECTION'] + '</h2>' +
+        '<div id="bodyContent">'+
+        '<p>Next Stop: ' + bus['TIMEPOINT'] +'</p>'+
+        '</div>'+
+        '</div>'
+
+      var infoWindow = new google.maps.InfoWindow({
+        content: contents
+      })
+
+      google.maps.event.addListener(busMarker, 'click', function() {
+        infoWindow.open(map, busMarker)
+      })
 
     })
 
@@ -74,3 +91,5 @@
 
   google.maps.event.addDomListener(window, "load", initialize)
 </script>
+
+<div><p>This is text</p></div>

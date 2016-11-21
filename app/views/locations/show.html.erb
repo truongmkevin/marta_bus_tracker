@@ -22,15 +22,17 @@
   <%= @location.city %>
 </p>
 
+
+
+<% if @nearby_buses.count == 0 %>
+  <p>Better start walking...</p>
+<% else %>
 <p>
   There are <%= @nearby_buses.count %> by your location!
 </p>
+<% end %>
 
 <div id="map-canvas"></div>
-
-<% @nearby_buses.each do |bus| %>
-
-<% end %>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
@@ -91,5 +93,3 @@
 
   google.maps.event.addDomListener(window, "load", initialize)
 </script>
-
-<div><p>This is text</p></div>
